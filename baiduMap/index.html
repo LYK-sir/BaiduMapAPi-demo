@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <!--引入Bootstrap的CSS样式-->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-reboot.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>百度地图API</title>
+
+
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=您的密钥">
+    //v3.0版本的引用方式：src="http://api.map.baidu.com/api?v=3.0&ak=您的密钥"
+  </script>
+
+  <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js">
+    //使用CDN引用jquery.min.js
+  </script>
+
+  <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js">
+    //引入热力图api
+  </script>
+
+</head>
+
+<body>
+
+
+<div id="ct1">
+
+  <form class="form-horizontal juzhong" role="form">
+
+    <select id="city" class="zuoge ">
+      <option value="北京市海淀区" >北京-海淀区</option>
+      <option value="北京市朝阳区">北京-朝阳区</option>
+      <option value="北京市通州区">北京-通州区</option>
+      <option value="湖北省武汉市">湖北-武汉</option>
+    </select>
+
+    <div class="form-group  shange">
+      <button class="zuoge" type="button"  onclick="searchPlan()"> 机场</button>
+      <button class="zuoge" type="button"  onclick="searchSub()">  火车站</button>
+      <button class="zuoge" type="button"  onclick="searchFood()">  餐饮中心</button>
+      <button class="zuoge" type="button"  onclick="searchBus()">  商圈</button>
+    </div>
+
+    <div class="form-group">
+      <input class="zuoge shange " type="button"  onclick="openHeatmap();" value="显示热力图"/>
+      <input class="zuoge shange" type="button"  onclick="closeHeatmap();" value="关闭热力图"/>
+    </div>
+    <div class="form-group zuoge shange">
+      <label  class="col-sm-3 control-label">名称:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" value="name" id="firstname" disabled >
+      </div>
+    </div>
+    <div class="form-group zuoge shange">
+      <label  class="col-sm-3 control-label">电话:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control"   value="phone" id="phoneNumber"  disabled>
+      </div>
+    </div>
+    <div class="form-group zuoge shange">
+      <label class="col-sm-3 control-label">地址:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control"  value="addr"  id="address"  disabled>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="ctm">
+</div>
+<div id="ct2">
+</div>
+
+<script type="text/javascript" src="js/map.js"></script>
+</body>
+</html>
