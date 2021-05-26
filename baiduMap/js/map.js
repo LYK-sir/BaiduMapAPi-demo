@@ -14,7 +14,13 @@ function add_control()  //添加组件函数
 {
   map.addControl(top_left_scaleCtrl );
   map.addControl(bottom_right_viewCtrl);
+  map.setMapStyleV2({
+    styleId: 'd11f495b964e9b4434e19d2ed20f1187'
+  });
 }
+
+
+
 
 add_control();   //调用函数
 
@@ -72,30 +78,34 @@ var options={
     map: map,
     panel:"ctm",
   },
+  pageCapacity: 5,
   //查询完成后的回调函数,results 是LocalResult类型,一次检索只能获取一页10个数据
   onSearchComplete:function(results){
 
     console.log(results);
-    //返回结果数
-    var number = results.getNumPois();
+
     heatPoint = [];    //清空热力图数据.
     var data = {};     //获取查询结果的经纬度数据
     var lngnum;        //经度
     var latnum;        //维度
     var num;           //权重
 
-    for(var i=0; i<10; i++){
-       //获取经度.results的相关数据的json格式,可以直接获取
-       lngnum = results.getPoi(i).point.lng;
-       //获取维度
-       latnum =  results.getPoi(i).point.lat;
-       //热力图的设置需要权重,随机生成数据
-        num = Math.floor(Math.random()*100+1);
-        //将经度,维度,权重,格式化为json格式
-       data ={"lng":lngnum,"lat":latnum,"count":num};
-       //收集当页结果的经纬度权重数据,
-       heatPoint.push(data);
+  for(var index=0;index<results.length;index++)
+  {
+    for(var i=0; i<5; i++){
+      //获取经度.results的相关数据的json格式,可以直接获取
+      lngnum = results[index].getPoi(i).point.lng;
+      //获取维度
+      latnum =  results[index].getPoi(i).point.lat;
+      //热力图的设置需要权重,随机生成数据
+      num = Math.floor(Math.random()*100+1);
+      //将经度,维度,权重,格式化为json格式
+      data ={"lng":lngnum,"lat":latnum,"count":num};
+      //收集当页结果的经纬度权重数据,
+      heatPoint.push(data);
     }
+  }
+    console.log(heatPoint);
   },
 };
 
@@ -104,37 +114,32 @@ function searchPlan(){
   //清除地图上的所有覆盖物.
   map.clearOverlays();
   //创建本地检索对象.
+  var c1 = ["机场","火车站"];
   var local = new BMap.LocalSearch(map, options);
   //检索关键词,关键词的选取,可以参考百度地图api中的POI行业分类
-  local.search("机场");
+  local.search(c1);
 }
 
-function searchSub(){
-  map.clearOverlays();
-  var local = new BMap.LocalSearch(map,options);
-  local.search("火车站");
-}
+
 
 function searchFood(){
   map.clearOverlays();
+  var mykeys = ["星级酒店", "园区"];
   var local = new BMap.LocalSearch(map,options);
-  local.search("星级酒店");
+  local.search(mykeys);
 }
 
-function searchBus(){
-  map.clearOverlays();
-  var local = new BMap.LocalSearch(map,options);
-  local.search("园区");
-}
+
 
 //显示热力图
 function openHeatmap(){
+  //热力图初始化
+  heatmapOverlay1 = new BMapLib.HeatmapOverlay({"radius":20});
   //清除地图所有覆盖物
   map.clearOverlays();
   //判断浏览器是否支持canvas
   if(!isSupportCanvas()){alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能~')}
- //热力图初始化
-  heatmapOverlay1 = new BMapLib.HeatmapOverlay({"radius":20});
+
  //地图添加热力图层
   map.addOverlay(heatmapOverlay1);
  //热力图层添加数据

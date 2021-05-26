@@ -1,0 +1,43 @@
+html{height:100%}
+body{height:100%;margin:0px;padding:0px}
+ul li{
+  list-style-type:none;
+}
+
+#ct1{
+  height: 100%;
+  width: 20%;
+  float: left;
+}
+
+#ctm{
+  height: 100%;
+  width: 20%;
+  float: left;
+}
+
+
+
+#ct2{height:100%}
+
+.juzhong{
+  margin-top:5%
+}
+
+.zuoge{
+  margin-left: 20px;
+}
+
+.shange{
+  margin-top: 20px;
+}
+
+.neirong{
+  align-content: center;
+  border :1px solid #a1a1a1;
+  padding:10px 30px;
+  width:90%;
+  border-radius:15px;
+
+}
+

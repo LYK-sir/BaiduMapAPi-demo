@@ -8,11 +8,11 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-reboot.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/baiduMap.css">
   <title>百度地图API</title>
 
 
-  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=您的密钥">
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=3kjYdCzbw6zDQUbittFhqWRu0Kvraylj">
     //v3.0版本的引用方式：src="http://api.map.baidu.com/api?v=3.0&ak=您的密钥"
   </script>
 
@@ -20,9 +20,11 @@
     //使用CDN引用jquery.min.js
   </script>
 
-  <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js">
+  <!--<script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js">
     //引入热力图api
-  </script>
+  </script>-->
+  <script type="text/javascript" src="js/heatMap.js"></script>
+  </body>
 
 </head>
 
@@ -41,10 +43,8 @@
     </select>
 
     <div class="form-group  shange">
-      <button class="zuoge" type="button"  onclick="searchPlan()"> 机场</button>
-      <button class="zuoge" type="button"  onclick="searchSub()">  火车站</button>
-      <button class="zuoge" type="button"  onclick="searchFood()">  餐饮中心</button>
-      <button class="zuoge" type="button"  onclick="searchBus()">  商圈</button>
+      <button class="zuoge" type="button"  onclick="searchPlan()"> 交通</button>
+      <button class="zuoge" type="button"  onclick="searchFood()">  休闲</button>
     </div>
 
     <div class="form-group">
@@ -72,7 +72,9 @@
   </form>
 </div>
 
+
 <div id="ctm">
+
 </div>
 <div id="ct2">
 </div>
